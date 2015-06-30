@@ -53,13 +53,14 @@ public class HelloLTL {
 		                     "X ( p /\\ [] <> q )",
 		                     "( X p ) /\\ ( [] <> q )",
 		                     "X ( p \\/ [] <> q )",
-		                     "( X p ) \\/ ( [] <> q )"
+		                     "( X p ) \\/ ( [] <> q )",
+		                     "(p /\\ q) \\/ (p /\\ r)"
 							};
 		for (String f : formulas) {
 			try {
 				System.out.println(f);
 				Formula.parse(f);
-				String[] predicates = getPredicates(f);
+				String[] predicates = Formula.getPredicates(f);
 				for (String p : predicates) {
 					System.out.println("->"+p);
 				}
@@ -69,18 +70,5 @@ public class HelloLTL {
 				e.printStackTrace();
 			}
 		}
-	}
-	
-	public static String[] getPredicates(String formula) {
-		List<String> predicates = new ArrayList<String>();
-		Pattern pattern = Pattern.compile("([a-z][a-zA-Z0-9]*)");
-		Matcher matcher = pattern.matcher(formula);
-		while (matcher.find()) {
-			if (!matcher.group().equals("true") && !matcher.group().equals("false")) {
-				predicates.add(matcher.group());
-				//System.out.println(" ->"+matcher.group());
-			}
-		}
-		return (String[]) predicates.toArray(new String[predicates.size()]);
 	}
 }
