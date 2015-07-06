@@ -1,10 +1,5 @@
 package ltl.example;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import gov.nasa.ltl.trans.Formula;
 import gov.nasa.ltl.trans.ParseErrorException;
 
